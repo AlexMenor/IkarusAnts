@@ -249,10 +249,62 @@ Requerimientos Hardware % TODO: Jesús, José Miguel
 
 La mayor parte de la agricultura depende de imágenes multiespectrales. Específicamente monitorizando los cambios en el tiempo de la luz VIS (Visible Light) y NIR (Near Infrared Light) reflejada por los cultivos ya que las plantas reflejan diferentes cantidades de estos dos tipos de luz dependiendo de su salud. Véase la siguiente imagen  % TODO [7]
 
+
+\begin{figure}{H}
+	\centering
+	\includegraphics[totalheight=8cm]{img/leaf.png}
+	\caption{Reflejo de luz}
+	\label{fig:luz}
+\end{figure}
+
+Debido a las capas esponjosas de las hojas en su parte posterior, estas reflejan una gran cantidad de luz en el espectro cercano infrarrojo en contraste con otros objetos diferentes a las plantas. Cuando una planta está deshidratada o estresada, esa capa esponjosa colapsa y reflejan una menor cantidad de infrarrojo aunque la misma en el espectro visible. Comparando estas dos señales podemos diferenciar una planta sana de una enferma en lo que se llama NDVI (Normalized Difference Vegetation Index) [8] y se calcula como
+
+\[ NDVI=(NIR-VIS)/(NIR+VIS) \]
+
+Otros parámetros a considerar pueden ser
+
+\begin{itemize}
+	\item CWSI (Crop Water Stress Index):
+	Mide las diferencias de temperatura para detectar o predecir estrés de agua en la planta. Requiere de un sensor térmico y el uso de una estación meteorológica cercana.
+	\item CCCI (Canopy Chlorophyll Content Index): detecta los niveles de nitrógeno de usando una tri-banda cerca del espectro visible del rojo.
+\end{itemize}
+
+
+Centrándonos en la cámara se requiere de una cámara de alta resolución que tome imágenes del espectro visible (VIS). La resolución mínima para agricultura es de unos 12 megapíxeles. Otra opción es usar cámaras con un mayor ángulo de visión u ojo de pez que permite una captura mayor por imagen. Con un procesado posterior de imagen podemos eliminar la distorsión causada por este tipo de cámaras.
+
+\
+
+Por otro lado, las cámaras multiespectrales nos permiten ver bandas del espectro diferentes a la visible. 
+Cámara multiespectral para DJI Phantom https://sentera.com/dji-ndvi-upgrade/
+
+\
+
+
+Otro tipo de cámaras son las térmicas que permiten ver puntos calientes y medir los cambios de temperatura de las plantas con el paso del tiempo. Permiten también detectar la presencia de agua, útil en caso de inundaciones.
+
+\
+
+LIDAR es otra forma de medición de precisión que mide la distancia iluminando el objetivo con un láser y analizando la luz reflejada. Sirve para la medición y realización de modelos en 3D precisos. (Son los sensores más caros +60.000\$)
+
+\
+
+Requerimientos de Software% TODO: Carlos, Alex
+\begin{itemize}
+	\item Frontend: Web o app
+	\item Backend: Software del dron + Software de la rpi (si la usamos para los sensores) + Software de la estación (se encarga de recoger los datos y adecuarlos al frontend)	
+\end{itemize}
+
+\subsection{Modelo de negocio}
+% TODO: hacer
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 %					 Bibliografía
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+\newpage
+\bibliography{citas} %archivo citas.bib que contiene las entradas 
+\bibliographystyle{plain} % hay varias formas de citar
 
 \end{document}
