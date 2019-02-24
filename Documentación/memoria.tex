@@ -21,11 +21,14 @@
 \usepackage[all]{xy} % Diagramas
 \usepackage{xparse} % Entornos
 \usepackage{listings}
+\usepackage{float} %Permite fijar la posición de una imagen en el texto poniendo {figure}[H] 
  
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+
 
 \lstdefinestyle{mystyle}{
 	backgroundcolor=\color{backcolour},   
@@ -46,7 +49,7 @@
 	tabsize=2
 }
 \lstset{style=mystyle}
- 
+
 
 
 % Comandos
@@ -65,6 +68,17 @@
 \linespread{1.1}                  % Espacio entre líneas.
 \setlength\parindent{0pt}         % Indentación para párrafo.
 
+\usepackage[pages=some]{background}
+% configuración
+\backgroundsetup{
+ scale=1, %escala de la imagen, es recomendable que sea del mismo tamaño que el pdf
+ color=black, %fondo a usar para transparencia
+ opacity=0.2, %nivel de transparencia
+ angle=0, %en caso de querer una rotación
+ contents={%
+  \includegraphics[width=\paperwidth]{ikaruslogo.jpg}} %nombre de la imagen a utilizar como fondo
+ }%
+
 \title{Proyecto IX Desafío Tecnológico ETSIIT\\
 		Dron para monitorización de agricultura y silvicultura }
 \author{Ikarus Ants}
@@ -74,7 +88,7 @@
 %					 Inicio del documento
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \begin{document}
-
+\BgThispage
 \maketitle
 \tableofcontents % Generando el indice
 \newpage
@@ -141,6 +155,8 @@ Proveemos un servicio, nuestra empresa se reserva el derecho de propiedad del si
 \subsection{Business Model Canvas}
 
 
+\newpage
+
 \section{Diseño inicial de la propuesta}
 
 \subsection{¿En qué entorno se puede aplicar su producto?}
@@ -156,7 +172,7 @@ Acceso a una interfaz intuitiva que permite gestionar uno o más drones instalad
 
 \subsection{Describa brevemente qué elementos componen sus sistema, y qué función tienen}
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\includegraphics[totalheight=8cm]{img/esquema_inicial.png}
 	\caption{Esquema el sistema}
@@ -181,120 +197,6 @@ Los 6 componentes de nuestro sistema (Figura \ref{fig:esquema_inicial}) son:
 \subsection{Indique qué tecnología piensan usar para implementar los elementos del sistema.}
 El software a utilizar será el código necesario para el control del cuadricóptero durante su vuelo usando una Raspberry Pi B+. La sección de hardware consistirá en el ensamblaje de los componentes individuales necesarios para el vuelo y la navegación así como usar Navio+ para pruebas. Los componentes no los seleccionaremos en un kit sino que lo haremos individualmente. La parte de toma de imágenes será llevada a cabo con una Raspberry Pi 3 y librerías de procesamiento de imágenes. Para el funcionamiento en conjunto del sistema usaremos RTI Connext DDS y será necesario realizar una interfaz web para el usuario.
 
-
-\section{Características}
-Los datos a medir en nuestro caso pueden ser [5]:
-
-\begin{itemize}
-	\item Imágenes geo-etiquetadas visibles y multiespectrales de la zona reconocida.
-	\begin{itemize}
-		\item Altura de las plantas
-		\item Número de plantas
-		\item Salud y estado de las plantas
-		\item Presencia de nutrientes
-		\item Presencia de enfermedades
-		\item Presencia de malas hierbas
-		\item Estimación de biomasa
-		\item Datos volumétricos
-	\end{itemize}
-
-	\item Rendimiento de maquinaria agrícola como cosechadoras, sembradoras, tractores, etc.
-\end{itemize}
-
-
-Recapitulando y conceptualmente, los ámbitos en el que se aplica nuestra solución son los siguientes:	
-\begin{itemize}
-	\item Monitorizado de cultivos:
-	\begin{itemize}
-		\item Inspección o búsqueda de patologías desde el aire
-	\end{itemize}
-	\item Topografía del terreno a partir de la fotogrametría.
-	Para un mayor control sobre irregularidades del terreno es necesario conocer su topografía.
-	\item Control forestal
-	\begin{itemize}
-		\item Detección de basura y posible recogida.
-		Una prevención total del incendio, implica prevenir una de los causas más importantes de los incendios forestales
-		\item Prevención de incendios y ayuda especializada en su extinción
-		\item Control o monitorizado de animales en peligro de extinción
-		\item Búsqueda de personas desaparecidas en caso de emergencia
-	\end{itemize}
-	
-\end{itemize}
-
-
-\subsection{Necesidad de esta solución (¿qué no aportan otras?)}
-% TODO
-Los trabajadores de cultivos han de saber el estado del terreno:
-\begin{itemize}
-	\item Los terrenos pueden ser enormes, es costoso recorrerlos e ir examinando 
-	\item Podríamos ofrecer una visión global del terreno cada x tiempo
-	\item Reconocimiento de zonas en las que es necesario una acción (cuidados especiales para una zona del terreno o recoger basura)
-\end{itemize}
-
-Sensores en el terreno:
-\begin{itemize}
-	\item Posible avería ante condiciones adversas de parte de los sensores que tienen que estar 24/7 ahí % TODO refrasear
-	\item Hay que alimentar los sensores (si no tienen placas fotovoltaicas habría que cablearlo y si las tienen sería caro poner muchos)
-	\item No advierten de la basura en el terreno
-\end{itemize}
-
-
-\subsection{Descripción del producto}
-Requerimientos Hardware % TODO: Jesús, José Miguel
-
-\begin{itemize}
-	\item Requerimientos aéreos del dron
-	\item Funcionamiento de las cámaras para medir la salud de una plantación
-\end{itemize}
-
-La mayor parte de la agricultura depende de imágenes multiespectrales. Específicamente monitorizando los cambios en el tiempo de la luz VIS (Visible Light) y NIR (Near Infrared Light) reflejada por los cultivos ya que las plantas reflejan diferentes cantidades de estos dos tipos de luz dependiendo de su salud. Véase la siguiente imagen  % TODO [7]
-
-
-\begin{figure}{H}
-	\centering
-	\includegraphics[totalheight=8cm]{img/leaf.png}
-	\caption{Reflejo de luz}
-	\label{fig:luz}
-\end{figure}
-
-Debido a las capas esponjosas de las hojas en su parte posterior, estas reflejan una gran cantidad de luz en el espectro cercano infrarrojo en contraste con otros objetos diferentes a las plantas. Cuando una planta está deshidratada o estresada, esa capa esponjosa colapsa y reflejan una menor cantidad de infrarrojo aunque la misma en el espectro visible. Comparando estas dos señales podemos diferenciar una planta sana de una enferma en lo que se llama NDVI (Normalized Difference Vegetation Index) [8] y se calcula como
-
-\[ NDVI=(NIR-VIS)/(NIR+VIS) \]
-
-Otros parámetros a considerar pueden ser
-
-\begin{itemize}
-	\item CWSI (Crop Water Stress Index):
-	Mide las diferencias de temperatura para detectar o predecir estrés de agua en la planta. Requiere de un sensor térmico y el uso de una estación meteorológica cercana.
-	\item CCCI (Canopy Chlorophyll Content Index): detecta los niveles de nitrógeno de usando una tri-banda cerca del espectro visible del rojo.
-\end{itemize}
-
-
-Centrándonos en la cámara se requiere de una cámara de alta resolución que tome imágenes del espectro visible (VIS). La resolución mínima para agricultura es de unos 12 megapíxeles. Otra opción es usar cámaras con un mayor ángulo de visión u ojo de pez que permite una captura mayor por imagen. Con un procesado posterior de imagen podemos eliminar la distorsión causada por este tipo de cámaras.
-
-\
-
-Por otro lado, las cámaras multiespectrales nos permiten ver bandas del espectro diferentes a la visible. 
-Cámara multiespectral para DJI Phantom https://sentera.com/dji-ndvi-upgrade/
-
-\
-
-
-Otro tipo de cámaras son las térmicas que permiten ver puntos calientes y medir los cambios de temperatura de las plantas con el paso del tiempo. Permiten también detectar la presencia de agua, útil en caso de inundaciones.
-
-\
-
-LIDAR es otra forma de medición de precisión que mide la distancia iluminando el objetivo con un láser y analizando la luz reflejada. Sirve para la medición y realización de modelos en 3D precisos. (Son los sensores más caros +60.000\$)
-
-\
-
-Requerimientos de Software% TODO: Carlos, Alex
-\begin{itemize}
-	\item Frontend: Web o app
-	\item Backend: Software del dron + Software de la rpi (si la usamos para los sensores) + Software de la estación (se encarga de recoger los datos y adecuarlos al frontend)	
-\end{itemize}
-
-\subsection{Modelo de negocio}
 % TODO: hacer
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
