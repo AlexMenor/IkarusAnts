@@ -1,31 +1,34 @@
-INTRODUCCIÓN
+INTRODUCCIÃ“N
 
 
-El objetivo de este proyecto es permitir el análisis de cultivos y/o zonas forestales mediante fotografías con drones aéreos, prescindiendo de la imagen por satélite
+El objetivo de este proyecto es el anï¿½lisis de cultivos y zonas forestales empleando visiÃ³n por computador a partir de imÃ¡genes captadas por drones aÃ©reos.
 
 
+Con la informaciÃ³n de los drones se podrÃ¡ mejorar la eficiencia de cultivos y detectar a tiempo posibles plagas.
+Diferentes sensores para la detecciÃ³n de humo permitirÃ¡n detectar incendios en tiempo real cuando el dron estÃ© patrullando el Ã¡rea.
+El control de la basura en grandes superficies con dificultades de acceso puede mejorarse con el uso de drones para hacer mapas de distribuciÃ³n de basura.
 
 
-DISEÑO
+DISEÃ‘O
 
 
-En cuanto al diseño inicial de la propuesta, para abordarlo, nos hemos centrado en 2 puntos:
-El entorno en el que se aplica, el caso práctico de su uso, los componentes que forman 
-nuestro sisitema y las tecnologías a implementar.
+En cuanto al diseï¿½o inicial de la propuesta, para abordarlo, nos hemos centrado en 2 puntos:
+El entorno en el que se aplica, el caso prï¿½ctico de su uso, los componentes que forman 
+nuestro sisitema y las tecnologï¿½as a implementar.
 
-Basicamente, nuestra solución esta enfocada en entornos de espacios 
+Basicamente, nuestra soluciï¿½n esta enfocada en entornos de espacios 
 naturales abierto como grandes plantaciones, dedicandose al monitorizado de cultivos, y
 reservas naturales, dedicandose a la silviocultura.
 
 Nuestra servicio se basa en una pagina web capaz de poder sastifacer al cliente toda
 necesidad desde cualquier punto con acceso a internet. 
-Desde la aplicación, podrá gestionar uno o mas drones con sus respectivas bases 
-a partir de una interfaz intuitiva, acceder a imagenes aéreas de cada uno de ellos,
-la visualización de diferentes parámetros según el servicio ofrecido, obtener analisis de datos
+Desde la aplicaciï¿½n, podrï¿½ gestionar uno o mas drones con sus respectivas bases 
+a partir de una interfaz intuitiva, acceder a imagenes aï¿½reas de cada uno de ellos,
+la visualizaciï¿½n de diferentes parï¿½metros segï¿½n el servicio ofrecido, obtener analisis de datos
 recogidos por cada uno de los drones ofreciendo un diagnostico del estado actual de cultivos
-o reservas naturales, planificar personalmente la ruta de cada dron y la activación manual 
-o la automatización de las tareas, siendo a elección del cliente.
+o reservas naturales, planificar personalmente la ruta de cada dron y la activaciï¿½n manual 
+o la automatizaciï¿½n de las tareas, siendo a elecciï¿½n del cliente.
 
-La raspberry podríamos programarla con un lenguaje de propósito general como C++ o Python usando las librerías pertinentes para el procesamiento de la información que capten los sensores. 
-En los servidores de aplicación podemos implementar una API para recibir y enviar información de y a los drones (siempre que estén en su estación).
-Los servidores de aplicación procesan y envían la información a los servidores de datos para almacenarla. La interfaz web también se conectaría a un servidor de aplicación para obtener la información que mostrar al cliente.
+La raspberry podrï¿½amos programarla con un lenguaje de propï¿½sito general como C++ o Python usando las librerï¿½as pertinentes para el procesamiento de la informaciï¿½n que capten los sensores. 
+En los servidores de aplicaciï¿½n podemos implementar una API para recibir y enviar informaciï¿½n de y a los drones (siempre que estï¿½n en su estaciï¿½n).
+Los servidores de aplicaciï¿½n procesan y envï¿½an la informaciï¿½n a los servidores de datos para almacenarla. La interfaz web tambiï¿½n se conectarï¿½a a un servidor de aplicaciï¿½n para obtener la informaciï¿½n que mostrar al cliente.
