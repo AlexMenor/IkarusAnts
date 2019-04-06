@@ -1,5 +1,13 @@
+INTRODUCCIÓN
 
-Guión:
+
+El objetivo de este proyecto es permitir el análisis de cultivos y/o zonas forestales mediante fotografías con drones aéreos, prescindiendo de la imagen por satélite
+
+
+
+
+DISEÑO
+
 
 En cuanto al diseño inicial de la propuesta, para abordarlo, nos hemos centrado en 2 puntos:
 El entorno en el que se aplica, el caso práctico de su uso, los componentes que forman 
@@ -15,5 +23,9 @@ Desde la aplicación, podrá gestionar uno o mas drones con sus respectivas bases
 a partir de una interfaz intuitiva, acceder a imagenes aéreas de cada uno de ellos,
 la visualización de diferentes parámetros según el servicio ofrecido, obtener analisis de datos
 recogidos por cada uno de los drones ofreciendo un diagnostico del estado actual de cultivos
-o reservas naturales, planificar personalmente la ruta de cada dron y la activación manual
+o reservas naturales, planificar personalmente la ruta de cada dron y la activación manual 
 o la automatización de las tareas, siendo a elección del cliente.
+
+La raspberry podríamos programarla con un lenguaje de propósito general como C++ o Python usando las librerías pertinentes para el procesamiento de la información que capten los sensores. 
+En los servidores de aplicación podemos implementar una API para recibir y enviar información de y a los drones (siempre que estén en su estación).
+Los servidores de aplicación procesan y envían la información a los servidores de datos para almacenarla. La interfaz web también se conectaría a un servidor de aplicación para obtener la información que mostrar al cliente.
